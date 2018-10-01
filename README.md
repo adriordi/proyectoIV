@@ -7,7 +7,7 @@ Ver [página del proyecto](https://adriordi.github.io/proyectoIV/)
 Proyecto para la asignatura "Infraestructura Virtual" de la Escuela Técnica Superior de Ingenierías Informática y de Telecomunicación.
 El proyecto se basa en una cartera virtual para llevar un control sobre su presupuesto, gastos e ingresos de una manera rápida.
 
-#Herramientas
+# Herramientas
 Las herramientas y servicios para desarrollar y desplegar el proyecto serán:
 
 * Python; como principal lenguaje de programación.
