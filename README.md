@@ -10,8 +10,8 @@ El proyecto se basa en una cola de trabajos para mantener el orden y prioridad s
 # Herramientas
 Las herramientas y servicios para desarrollar y desplegar el proyecto serán:
 
-* Python; como principal lenguaje de programación.
-* hug; como framework para desarrollar la API.
-* unittest; como framework para los test unitarios.
-* Docker, Azure o Heroku y Travis-CI; para la integración y el despliege.
-* Elasticsearch; para la base de datos. 
+* [Python](https://www.python.org/); como principal lenguaje de programación.
+* [hug](http://www.hug.rest/); como framework para desarrollar la API.
+* [unittest](https://docs.python.org/3/library/unittest.html); como framework para los test unitarios.
+* [Docker](https://www.docker.com/), [Azure](https://azure.microsoft.com/es-es/) o [Heroku](https://www.heroku.com/) y [Travis-CI](https://travis-ci.org); para la integración y el despliege.
+* [Elasticsearch](https://www.elastic.co/); para la base de datos. 
