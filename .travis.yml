@@ -1,0 +1,11 @@
+language: pyhton
+python:
+  - "3.4"
+  - "3.5"
+  - "3.6"
+  
+install:
+  - pip install -r requeriments.txt
+
+script:
+  - make test
