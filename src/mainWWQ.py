@@ -1,5 +1,3 @@
-
-
 class WorkWaitQueue:
 
     def __init__(self, name, nw):
