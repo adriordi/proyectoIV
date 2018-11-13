@@ -1,4 +1,3 @@
-python
 pytest
 hug
 gunicorn
