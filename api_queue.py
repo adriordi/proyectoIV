@@ -1,7 +1,7 @@
 import hug
 import json
 
-from mainWWQ import WorkWaitQueue
+from src.mainWWQ import WorkWaitQueue
 
 queue = WorkWaitQueue("service_queue", 0)
 
