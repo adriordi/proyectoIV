@@ -1,1 +1,1 @@
-web:gunicorn api_queue:app
+web:gunicorn workwaitqueue:app
