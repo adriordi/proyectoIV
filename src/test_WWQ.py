@@ -1,5 +1,5 @@
 import unittest
-from mainWWQ import WorkWaitQueue
+from src.mainWWQ import WorkWaitQueue
 
 
 class testWWQ(unittest.TestCase):
