@@ -1,1 +1,1 @@
-web: gunicorn api_queue:app
+web: gunicorn api_queue:__hug_wsgi__
