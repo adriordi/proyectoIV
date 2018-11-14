@@ -1,11 +1,12 @@
 language: python
 python:
-  - "3.4"
-  - "3.5"
-  - "3.6"
-  
+- '3.4'
+- '3.5'
+- '3.6'
 install:
-  - pip install -r requirements.txt
-
+- pip install -r requirements.txt
 script:
-  - make test
+- make test
+deploy:
+  api_key:
+    secure: MuHUOW1i2b4l3lV4qamwdpxPRA6VT4UUp7Oq8dFTjnSSpyq1+izjzl8Zb1XQqKpb78f/bnbGtFdY5P30dkl1p18VDvjKbSmoc+OxEMB2URXMPMRTpjflZzVp9IpSZptIk1VUnEo+6MYkEC5EyFK4I2xHb6U90DR7ue1jybUzMrEDFyO2aBm/0ERkMPgQuJJ2IcUuHqezaNkSwU4YmVnVE0z7Rv+2ylrtJbI8W10jbdzpMsjHn25sjbMwMKraO0CRgtHIJxLb2cmjX1J2hoE6CeTm5AFGvWbhMqB3hJ9DeQwA5jHMGs+lCtnzT+jemPrq7VGItnWrJ2nkwzNlego37eH9F6nRAdMdAmFL2UNiM/IQ7++npxmvle/wrj0w5duU2san0ZbCwDjvUhhs72DY8UR12RYSaCiUlkhrQEMV7QD/C/Biwl/CGDZnbfYmn2/xsw5F+JM0Au/bi3Z15VC2NVX759iUVpuLttFXgWGs10ecKA/F4ki5gKAY+6q9p7jyiWBlflKCKGaXwVQPbnntNnkXAb3QE9bQZUBJt0eW+gEe0vv/FkOSPLeTKbfpDda9hwj/bm0nRNpawoOB75kmZyPfcF2umjkwM2LCwdD9afKoN6NmDi908aQop4XlaujbYWPUAOEMzx0ymZvt78we3NpXuAlPwGr+GAJNexHOWSY=
