@@ -16,10 +16,7 @@ script:
     - 'docker tag radidiaz/work_wait_queue registry.heroku.com/$HEROKU_APP_NAME/web'
 deploy:
     provider: script
-    script:
-    docker push radidiaz/work_wait_queue;
-    docker push registry.heroku.com/$HEROKU_APP_NAME/web;
-    heroku container:release web --app $HEROKU_APP_NAME"
+    script: 'docker push radidiaz/work_wait_queue; docker push registry.heroku.com/$HEROKU_APP_NAME/web; heroku container:release web --app $HEROKU_APP_NAME'
     on:
         branch: master
     provider: heroku
