@@ -6,21 +6,13 @@ from src.mainWWQ import WorkWaitQueue
 queue = WorkWaitQueue("service_queue", 0)
 
 @hug.get('/')
-def state():
+def status():
         """Returns json with app status"""
         response = {
-                "status": "OK"
-        }
-
-@hug.get()
-def status():
-        """Returns json with status and a rute example"""
-        response = {
                 "status": "OK",
-                "ejemplo": { "ruta": "/ruta/parametro",
-                             "valor": "{JSON: devuelto}"
-                }
         }
+        
+        return response
         
 @hug.get()
 def get_works():
