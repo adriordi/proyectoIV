@@ -1,6 +1,6 @@
 # Despliegue en Heroku
 
-Para poder desplegar mi applicación en Heroku seguí los pasos que se pueden leer en [su documentación](https://devcenter.heroku.com/articles/heroku-cli) además de crear el archivo Procfile.
+Para poder desplegar mi applicación en Heroku seguí los pasos que se pueden leer en [su documentación](https://devcenter.heroku.com/articles/heroku-cli).
 
 Mi despliegue fue siguiendo los siguientes pasos:
 
@@ -38,3 +38,17 @@ heroku git:remote -a workwaitqueue
 git push heroku master
 ~~~~
 
+
+Aparte tuve que crear el archivo Procfile.
+
+~~~~
+web: gunicorn api_queue:__hug_wsgi__
+~~~~
+
+Además de actualizar mi fichero requirements.txt añadiendo gunicorn.
+
+~~~~
+pytest
+hug
+gunicorn
+~~~~
