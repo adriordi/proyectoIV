@@ -50,3 +50,8 @@ Los pasos que he seguido para realizar el [despliegue](https://workwaitqueue.her
 
 Toda la documentación sobre la api, que proporciona el propio hug, la puedes encontrar [aquí](https://workwaitqueue.herokuapp.com/documentation).
 
+Se puede comprobar el funcionamiento realizando las siguientes operaciones:
+
+* Obtener el número de trabajos de la cola: [/get_works](https://workwaitqueue.herokuapp.com/get_works)
+
+* Añadir un trabajo a la cola: [/add_work](https://workwaitqueue.herokuapp.com/add_work)
