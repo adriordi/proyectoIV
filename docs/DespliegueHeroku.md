@@ -39,7 +39,7 @@ git push heroku master
 ~~~~
 
 
-Aparte tuve que crear el archivo Procfile.
+Aparte tuve que crear un archivo Procfile para especificar en él los comandos que serán ejecutados por los dynos de Heroku.
 
 ~~~~
 web: gunicorn api_queue:__hug_wsgi__
