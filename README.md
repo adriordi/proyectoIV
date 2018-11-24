@@ -55,3 +55,4 @@ Se puede comprobar el funcionamiento realizando las siguientes operaciones:
 * Obtener el número de trabajos de la cola: [/get_works](https://workwaitqueue.herokuapp.com/get_works)
 
 * Añadir un trabajo a la cola: [/add_work](https://workwaitqueue.herokuapp.com/add_work)
+> Para ver la funcionalidad de este método de la api se debe de hacer con un curl desde terminal.
