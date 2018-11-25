@@ -57,7 +57,7 @@ deploy:
 heroku authorizations:create
 ~~~~
 
-* Tag y push den deploy de la imagen
+* Tag y push del deploy de la imagen
 
 ~~~~
 - docker tag "user_dockerhub"/"repo_dockerhub" registry.heroku.com/$HEROKU_APP_NAME/web
@@ -74,4 +74,4 @@ heroku container:release web --app $HEROKU_APP_NAME
 ~~~~
 
 
-Al final nuestro archivo .travis.yml quedaría [así](https://github.com/adriordi/proyectoIV/.travis.yml)
+Al final nuestro archivo .travis.yml quedaría [así](https://github.com/adriordi/proyectoIV/blob/master/.travis.yml)
