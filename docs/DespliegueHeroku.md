@@ -44,3 +44,4 @@ Después vamos al apartado de configuración de mi aplicación en Heroku y compr
 
 Además hay que añadir un archivo Procfile para especificar en él los comandos que serán ejecutados por los dynos gratuitos de Heroku, al usar hug, se debe reemplazar `app` con `__hug_wsgi__`([visto aquí](https://github.com/timothycrosley/hug/issues/308#issuecomment-219351612)). Por último hay que actualizar el fichero [requirements.txt](https://github.com/adriordi/proyectoIV/blob/master/requirements.txt) añadiendo `gunicorn` ya que es el servidor que vamos a usar.
 
+Más información sobre el archivo Procfile [aquí](https://devcenter.heroku.com/articles/procfile)
