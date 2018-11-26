@@ -45,6 +45,24 @@ def add_work():
 
 	return response
 
+@hug.put()
+def del_work():
+	"""Delete a job to the queue"""
+	try:
+		queue.delWork()
+		status = 200
+		description = "OK"
+	except Exception as e:
+		status = 500
+		description = "Error: Internal server error"
+
+	response = {
+		"status": status,
+		"description": description
+	}
+
+	return response
+
 @hug.get()
 def empty():
 	""" Returns json with true or false according to queue is empty"""
