@@ -15,23 +15,23 @@ def status():
         return response
         
 @hug.get()
-def get_works():
-	""" Returns json containing the size of the queue"""
+def works():
+	""" Returns json containing with the number of jobs that queue have"""
 	response = {
 		"status": 200,
 		"description": "OK",
 		"data": {
-			"queue size": queue.size()
+			"queue size": queue.nWorks()
 		}
 	}
 
 	return response
 
-@hug.post("/add_work")
-def add_work(body=None):
+@hug.put()
+def add_work():
 	"""Adds a new job to the queue"""
 	try:
-		queue.addnWorks()
+		queue.addWork()
 		status = 200
 		description = "OK"
 	except Exception as e:
@@ -41,6 +41,19 @@ def add_work(body=None):
 	response = {
 		"status": status,
 		"description": description
+	}
+
+	return response
+
+@hug.get()
+def empty():
+	""" Returns json with true or false according to queue is empty"""
+	response = {
+		"status": 200,
+		"description": "OK",
+		"data": {
+			"queue empty": queue.queueEmpty()
+		}
 	}
 
 	return response
