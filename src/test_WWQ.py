@@ -1,6 +1,21 @@
 import unittest
+import json
+import requests
 from src.mainWWQ import WorkWaitQueue
 
+url = "https://workwaitqueue.herokuapp.com/"
+
+def test_status(self):
+    response = requests.get(url)
+    self.assertEqual(self.response.status,200)
+
+def test_works(self):
+    response = requests.get(url+"works")
+    self.assertEqual(self.response.status,200)
+
+def test_empty(self):
+    response = requests.get(url+"empty")
+    self.assertEqual(self.response.status,200)
 
 class testWWQ(unittest.TestCase):
     def setUp(self):
