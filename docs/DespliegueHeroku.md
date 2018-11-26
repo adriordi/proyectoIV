@@ -38,17 +38,7 @@ heroku git:remote -a workwaitqueue
 git push heroku master
 ~~~~
 
+Después vamos al apartado de configuración de mi aplicación en Heroku y comprobamos que se ha enlazado correctamente nuestro repositorio de GitHub. En el apartado que hay justo debajo, seleccionamos "Enable Automatic deploys" para que cada vez que hagamos un push a la rama master se despliegue una nueva versión, además como es en nuestro caso, seleccionamos la opción "Wait for CI to pass before deploy" ya que tenemos un servicio de integración continua configurado en nuestro repositorio.
 
-Aparte tuve que crear un archivo Procfile para especificar en él los comandos que serán ejecutados por los dynos de Heroku.
+Además hay que añadir un archivo Procfile para especificar en él los comandos que serán ejecutados por los dynos gratuitos de Heroku, al usar hug, se debe reemplazar `app` con `__hug_wsgi__`([visto aquí](https://github.com/timothycrosley/hug/issues/308#issuecomment-219351612)). Por último hay que actualizar el fichero [requirements.txt](https://github.com/adriordi/proyectoIV/blob/master/requirements.txt) añadiendo `gunicorn` ya que es el servidor que vamos a usar.
 
-~~~~
-web: gunicorn api_queue:__hug_wsgi__
-~~~~
-
-Además de actualizar mi fichero requirements.txt añadiendo gunicorn.
-
-~~~~
-pytest
-hug
-gunicorn
-~~~~
