@@ -56,3 +56,7 @@ Se puede comprobar el funcionamiento realizando las siguientes operaciones:
 
 * Añadir un trabajo a la cola: [/add_work](https://workwaitqueue.herokuapp.com/add_work)
 > Para ver la funcionalidad de este método de la api se debe de hacer con un curl desde terminal.
+
+# Despliege con docker
+
+Enlace al [contenedor en DockerHub](https://hub.docker.com/r/radidiaz/work_wait_queue/)
