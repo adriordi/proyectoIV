@@ -45,3 +45,11 @@ Después vamos al apartado de configuración de mi aplicación en Heroku y compr
 Además hay que añadir un archivo Procfile para especificar en él los comandos que serán ejecutados por los dynos gratuitos de Heroku, al usar hug, se debe reemplazar `app` con `__hug_wsgi__`([visto aquí](https://github.com/timothycrosley/hug/issues/308#issuecomment-219351612)). Por último hay que actualizar el fichero [requirements.txt](https://github.com/adriordi/proyectoIV/blob/master/requirements.txt) añadiendo `gunicorn` ya que es el servidor que vamos a usar.
 
 Más información sobre el archivo Procfile [aquí](https://devcenter.heroku.com/articles/procfile)
+
+# Ejemplos de la funcionalidad de la API
+En la primera imagen se puede observar como la cola está vacía y añadimos un trabajo.
+![](./imgs/api_working_ex1.png)
+
+
+En la segunda imagen vemos como, después de añadir unos cuantos trabajos más, nos devuelve que la cola no está vacía y el ejemplo de uso de como eliminamos uno.
+![](./imgs/api_working_ex2.png)

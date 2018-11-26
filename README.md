@@ -58,8 +58,16 @@ Se puede comprobar el funcionamiento realizando las siguientes operaciones:
 curl -X PUT https://workwaitqueue.herokuapp.com/add_work
 ~~~~
 
+* Eliminar un trabajo de la cola: [/del_work](https://workwaitqueue.herokuapp.com/del_work)
+> Como pasa con el método anterior, para ver la funcionalidad tiene que ser desde consola ya que el navegador no nos lo permite.
+~~~~
+curl -X PUT https://workwaitqueue.herokuapp.com/del_work
+~~~~
+
 * Saber si la cola está vacía o no: [/empty](https://workwaitqueue.herokuapp.com/empty)
 > En el apartado data nos dice a través de un booleano si la cola está vacía (TRUE) o no (FALSE). 
+
+Al final de [este documento](./docs/DespliegueHeroku.md) se puede ver un par de ejemplos de uso de la api.
 
 # Despliege con docker
 Enlace al [contenedor en DockerHub](https://hub.docker.com/r/radidiaz/work_wait_queue/)
