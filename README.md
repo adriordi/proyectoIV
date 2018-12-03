@@ -5,10 +5,10 @@ Ver [página del proyecto](https://adriordi.github.io/proyectoIV/)
 [![Build Status](https://travis-ci.org/adriordi/proyectoIV.svg?branch=master)](https://travis-ci.org/adriordi/proyectoIV)
 
 # Enlaces
-[Instalación]()
-[Despliegue en Heroku]()
+[Instalación](https://github.com/adriordi/proyectoIV/blob/master/docs/Instalacion.md)
+[Despliegue en Heroku](https://github.com/adriordi/proyectoIV/blob/master/docs/Herokudocs.md)
 [Despliegue con Docker]()
-[Enlace al contenedor de DockerHub]()
+[Enlace al contenedor de DockerHub](https://hub.docker.com/r/radidiaz/proyectoiv/)
 
 # Descripción
 Proyecto para la asignatura "Infraestructura Virtual" de la Escuela Técnica Superior de Ingenierías Informática y de Telecomunicación.
