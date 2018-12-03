@@ -12,11 +12,11 @@ install:
     - 'pip install -r requirements.txt'
 script:
     - 'make test'
-    - 'docker build -t radidiaz/proyectoIV .'
-    - 'docker tag radidiaz/proyectoIV registry.heroku.com/$HEROKU_APP_NAME/web'
+    - 'docker build -t radidiaz/proyectoiv .'
+    - 'docker tag radidiaz/proyectoiv registry.heroku.com/$HEROKU_APP_NAME/web'
 deploy:
     provider: script
-    script: 'docker push radidiaz/proyectoIV; docker push registry.heroku.com/$HEROKU_APP_NAME/web; heroku container:release web --app $HEROKU_APP_NAME'
+    script: 'docker push radidiaz/proyectoiv; docker push registry.heroku.com/$HEROKU_APP_NAME/web; heroku container:release web --app $HEROKU_APP_NAME'
     on:
         branch: master
     provider: heroku
