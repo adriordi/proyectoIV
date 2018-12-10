@@ -4,7 +4,7 @@ import requests
 from src.mainWWQ import WorkWaitQueue
 from requests import *
 
-url = "https://workwaitqueue.herokuapp.com/"
+url = "https://workwaitqueue-docker.herokuapp.com/"
 
 class testWWQ(unittest.TestCase):
     def setUp(self):
