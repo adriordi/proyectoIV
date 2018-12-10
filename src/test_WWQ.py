@@ -4,7 +4,8 @@ import requests
 from src.mainWWQ import WorkWaitQueue
 from requests import *
 
-url = "https://workwaitqueue-docker.herokuapp.com/"
+# url = "https://workwaitqueue-docker.herokuapp.com/"
+#url = "localhost:8000"
 
 class testWWQ(unittest.TestCase):
     def setUp(self):
@@ -36,17 +37,17 @@ class testWWQ(unittest.TestCase):
         self.queue.delWork()
         self.assertEqual(self.queue.nWorks(), final_size)
 
-    def test_status(self):
-        r = requests.get(url)
-        self.assertEqual(r.status_code,200,"Devuelve status 200")
+#    def test_status(self):
+#        r = requests.get(url)
+#        self.assertEqual(r.status_code,200,"Devuelve status 200")
 
-    def test_works(self):
-        r = requests.get(url+"works")
-        self.assertEqual(r.status_code,200,"Devuelve status 200")
+#    def test_works(self):
+#        r = requests.get(url+"works")
+#        self.assertEqual(r.status_code,200,"Devuelve status 200")
 
-    def test_empty(self):
-        r = requests.get(url+"empty")
-        self.assertEqual(r.status_code,200,"Devuelve status 200")
+#    def test_empty(self):
+#        r = requests.get(url+"empty")
+#        self.assertEqual(r.status_code,200,"Devuelve status 200")
 
         
         
