@@ -1,25 +1,25 @@
 sudo: required
 language: python
 python:
-    - '3.6'
+- '3.6'
 services:
-    - docker
+- docker
 before_install:
-    - 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin'
-    - 'wget -qO- https://toolbelt.heroku.com/install.sh | sh'
-    - 'echo "$HEROKU_PASSWORD" | docker login -u "$HEROKU_USERNAME" --password-stdin registry.heroku.com'
+- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+- wget -qO- https://toolbelt.heroku.com/install.sh | sh
+- echo "$HEROKU_PASSWORD" | docker login -u "$HEROKU_USERNAME" --password-stdin registry.heroku.com
 install:
-    - 'pip install -r requirements.txt'
+- pip install -r requirements.txt
 script:
-    - 'make test'
-    - 'docker build -t radidiaz/proyectoiv .'
-    - 'docker tag radidiaz/proyectoiv registry.heroku.com/$HEROKU_APP_NAME/web'
+- make test
+- docker build -t radidiaz/proyectoiv .
+- docker tag radidiaz/proyectoiv registry.heroku.com/$HEROKU_APP_NAME/web
 deploy:
-    provider: script
-    script: 'docker push radidiaz/proyectoiv; docker push registry.heroku.com/$HEROKU_APP_NAME/web; heroku container:release web --app $HEROKU_APP_NAME'
-    on:
-        branch: master
-    provider: heroku
-    api_key:
-        secure: AHcTMxZvzXlGWJMOwrP/Hj3d8+3J60WsMOHkfY1PYVlgJk3qyVFDHsVCsUos9/94f8uQ/gp/z5KRJYCHhIyvVd0MzG5wLXaY3hxyzde9lr7XbFbBloPC6BKFOng9pBWyMiWh/SbYyq8YXP6sOV5x9NsX1cvds4frd9ZN8v0ZpLe0Hl7mgtPNtO6qG+Z6H6VEQrXr56ci8Ts7FY4bAdrbTxIXja18761gwqDqN6HoOpC73xymQZxjfB4LCmnd3SPLwF9kL4vJgcVSi/m9AOKFJdndKnSCnlkbwvxSdXiMHmU3QpcljKYqa9bftg24DHKXk3vJLC4auKMfDXQW6R3nb8kafrg/8L34SQs2MJpAJA9YDSOrOM23dqE+aRaNiZOyICxU4Rmm1TpnV6xynjksX4DMwJTHaJRPED24eaQIi+iCzga1CcdxF+RVViMW6HE+cT1MVt7ufMkzjTqayKXkaiOxaDR2MUjvcDRfFyW7Tw5UpY1/F4sE6ynRoXKMTtmIXioZIznroJmPwx41KrsyJsYhHSICq1VoL2CA7c8FmOw5jfpRerb+x0pfDgA2YEZjM0UiD9yFLq2R3MMkwLBaPx1RN3mcNl1f0b0SiipoehglDuWhQd4UctdhTuEB1MVrQo620TBvT8pIPzP7Yv9nvqXqFD3QMyyCisBzyve+UvU=
-    app: workwaitqueue
+  provider: heroku
+  script: docker push radidiaz/proyectoiv; docker push registry.heroku.com/$HEROKU_APP_NAME/web;
+    heroku container:release web --app $HEROKU_APP_NAME
+  on:
+    branch: master
+  api_key:
+    secure: dvk56vw8cXUYvaMHriLlspO/7NzmkkKthBfl2czCongR8NW2gl4ph0S/txTFDC+1zJwv2YLo1IhT5Ej84Ke64Cf9vyiKZ6UrE3/p0wYUWdAWCel1sH8wxc/za2evD3SZr+uyeNnkhQt1XnI9WD8BwJnSOq6bEuAKh66Xkdf2yItKIDnFCY6ruISJ2N3SpgdeOh13w/aLmycZSei9fclf3hVjgp2hn4BEVDGyjCMJA71g/xnw8xKP4XabvkIPGyrFzEWTTmjV1Z7p9UkxcW+KhMwPvjdZBKMwlk+1jFaGc9UsGJJEPTEviAekT9PeJBnbPDR+WDzuJiSu3oiWC5QVNm6U8ZemV0VhWea8+VbpBQcqXvz6FfN5x9zVDh0o0qxlw4iqSGdtc79ncPv8MkZnisTZliH1q5B2RCEtLJsOrvwVmEsBL2u/Tz4g6ZZMt/vjY2xleW6AW9dEaO+Fu73JAPC47wndCrdyfdGms/jJWXx7UQ5bgI4vlCIpSAqHIX12h7xBgMw+ffXb+IX22cSO1PoNhzyhdONPnrQ2CossWl+TrNUDolngKsxv89cJgTb6RZO521Vd3SWTfiEEJfs3MbzvjgepldLfFts+qwOID+eEDi17IN9T/RKvymH/mfvbEg2aOrFX3BQOnIv/lI6Z/cYIc9zHdIc5gBJ2b2/rhFU=
+  app: workwaitqueue
