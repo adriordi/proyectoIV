@@ -76,5 +76,3 @@ def empty():
 	return response
 
 
-
-hug.API(__name__).http.serve(port=5000)
