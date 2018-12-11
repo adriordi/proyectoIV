@@ -16,8 +16,7 @@ script:
 - docker tag radidiaz/proyectoiv registry.heroku.com/$HEROKU_APP_NAME/web
 deploy:
   provider: heroku
-  script: docker push radidiaz/proyectoiv; docker push registry.heroku.com/$HEROKU_APP_NAME/web;
-    heroku container:release web --app $HEROKU_APP_NAME
+  script: docker push radidiaz/proyectoiv; docker run -p 22022:22022 -e PORT=22022 radidiaz/proyectoiv; heroku container:push web --app $HEROKU_APP_NAME; heroku container:release web --app $HEROKU_APP_NAME
   on:
     branch: master
   api_key:
