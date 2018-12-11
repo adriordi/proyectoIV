@@ -1,7 +1,9 @@
 import hug
 import json
+import os
 from src.mainWWQ import WorkWaitQueue
 
+port = int(os.environ.get(“PORT”, 5000))
 queue = WorkWaitQueue("service_queue", 0)
 
 @hug.get('/')
