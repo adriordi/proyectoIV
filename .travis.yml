@@ -1,24 +1,24 @@
-sudo: required
+#sudo: required
 language: python
 python:
 - '3.6'
-services:
-- docker
-before_install:
-- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-- wget -qO- https://toolbelt.heroku.com/install.sh | sh
-- echo "$HEROKU_PASSWORD" | docker login -u "$HEROKU_USERNAME" --password-stdin registry.heroku.com
+#services:
+#- docker
+#before_install:
+#- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+#- wget -qO- https://toolbelt.heroku.com/install.sh | sh
+#- echo "$HEROKU_PASSWORD" | docker login -u "$HEROKU_USERNAME" --password-stdin registry.heroku.com
 install:
 - pip install -r requirements.txt
 script:
 - make test
-- docker build -t radidiaz/proyectoiv .
-- docker tag radidiaz/proyectoiv registry.heroku.com/$HEROKU_APP_NAME/web
+#- docker build -t radidiaz/proyectoiv .
+#- docker tag radidiaz/proyectoiv registry.heroku.com/$HEROKU_APP_NAME/web
 deploy:
   provider: heroku
-  script: docker push radidiaz/proyectoiv; docker run -p 5000:80 radidiaz/proyectoiv; heroku container:push web --app $HEROKU_APP_NAME; heroku container:release web --app $HEROKU_APP_NAME
-  on:
-    branch: master
+#  script: docker push radidiaz/proyectoiv; docker run -p 5000:80 radidiaz/proyectoiv; heroku container:push web --app $HEROKU_APP_NAME; heroku container:release web --app $HEROKU_APP_NAME
+#  on:
+#    branch: master
   api_key:
     secure: dvk56vw8cXUYvaMHriLlspO/7NzmkkKthBfl2czCongR8NW2gl4ph0S/txTFDC+1zJwv2YLo1IhT5Ej84Ke64Cf9vyiKZ6UrE3/p0wYUWdAWCel1sH8wxc/za2evD3SZr+uyeNnkhQt1XnI9WD8BwJnSOq6bEuAKh66Xkdf2yItKIDnFCY6ruISJ2N3SpgdeOh13w/aLmycZSei9fclf3hVjgp2hn4BEVDGyjCMJA71g/xnw8xKP4XabvkIPGyrFzEWTTmjV1Z7p9UkxcW+KhMwPvjdZBKMwlk+1jFaGc9UsGJJEPTEviAekT9PeJBnbPDR+WDzuJiSu3oiWC5QVNm6U8ZemV0VhWea8+VbpBQcqXvz6FfN5x9zVDh0o0qxlw4iqSGdtc79ncPv8MkZnisTZliH1q5B2RCEtLJsOrvwVmEsBL2u/Tz4g6ZZMt/vjY2xleW6AW9dEaO+Fu73JAPC47wndCrdyfdGms/jJWXx7UQ5bgI4vlCIpSAqHIX12h7xBgMw+ffXb+IX22cSO1PoNhzyhdONPnrQ2CossWl+TrNUDolngKsxv89cJgTb6RZO521Vd3SWTfiEEJfs3MbzvjgepldLfFts+qwOID+eEDi17IN9T/RKvymH/mfvbEg2aOrFX3BQOnIv/lI6Z/cYIc9zHdIc5gBJ2b2/rhFU=
   app: workwaitqueue
