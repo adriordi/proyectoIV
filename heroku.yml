@@ -1,5 +1,7 @@
+setup:
+  config: {}
 build:
-  docker:
-    web: Dockerfile
+  languages:
+    - python
 run:
-  web: gunicorn app:__hug_wsgi__
+  web: 'gunicorn api_queue:__hug_wsgi__'
