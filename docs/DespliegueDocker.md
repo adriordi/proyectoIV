@@ -1,77 +1,65 @@
 # Despliegue con Docker
 
-Al principio, para desplegar mi applicación con un contenedor, seguí los pasos de la [documentación de Docker](https://docs.docker.com/get-started/part2/#run-the-app), además de la [documentación de Heroku](https://devcenter.heroku.com/articles/container-registry-and-runtime).
+## Creación de workwaitqueue-docker
+Lo primero que hay que hacer es [crear una nueva applicación](https://github.com/adriordi/proyectoIV/blob/master/docs/DespliegueHeroku.md) en Heroku como hicimos en el hito anterior, en este caso, la he creado desde el propio navegador llamándola **workwaitqueue-docker**.
 
-Una vez estaba desplegado, con la ayuda de [Rafa Leyva](https://github.com/rafaelleru/), nos dimos cuenta de que sería mejor tener un despliegue automático para minimizar las tareas cada vez que se genera una nueva versión. Estuvimos leyendo la [documentación que ofrece Travis para desplegar con dockers](https://docs.travis-ci.com/user/docker/), hasta que encontramos [este artículo](https://medium.com/@javierfernandes/continuous-deployment-con-docker-travis-heroku-c24042fb830b) que describía perfectamente lo que queríamos hacer.
+## Creación de heroku.yml
+Una vez creada la applicación, debemos crear un archivo **heroku.yml** en la raíz de nuestro proyecto. Para ello vamos hacer uso del plugin "heroku-manifest", siguiendo estos pasos:
 
-# Pasos que seguí:
-
-Necesitaremos tener una cuenta en dockerhub para poder ejecutar docker en travis y una cuenta en Heroku para crear una app y taggear la imagen buildeada, para a continuación pushear la imagen y ejecutar el Heroku release.
-
-Debemos evitar escribir usuarios y passwords en .travis.yml, por lo que lo vamos añadir varias variables de ambiente, como usuario/password de dockerhub y heroku además de la api_key y app_name de nuestra aplicación a desplegar en heroku, definiéndolas en el apartado de "Environment Variables" de los ajustes de travis.
-
-* Añadir en .travis.yml
-
+* Actualizamos nuestro cli de heroku a la beta e instalamos el plugin.
 ~~~~
-sudo: required
-
-services:
-  - docker
+$ heroku update beta
+$ heroku plugins:install @heroku-cli/plugin-manifest
 ~~~~
 
-Para poder ejecutar el comando "docker"
-
-
-* Loggeo en dockerhub
-
+* Creamos el manifiesto de nuestra applicación.
 ~~~~
-before_install:
-  # login to docker registries (dockerhub + heroku)
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+$ heroku manifest:create
 ~~~~
 
-* Buildear y pusheo de la imagen 
-
+* Subimos los cambios a GitHub.
 ~~~~
-- docker build -t "user_dockerhub"/"repo_dockerhub" .
-
-deploy:
-  provider: script
-  script:
-    # push to dockerhub
-    docker push "user_dockerhub"/"repo_dockerhub";
-  branch: master
+$ git add heroku.yml
+$ git commit -m "Add heroku.yml"
 ~~~~
 
-* Instalar heroku CLI y loggin al registry de Heroku
-
+* Cambiamos la pila de heroku.
 ~~~~
-# install heroku CLI
-  - wget -qO- https://toolbelt.heroku.com/install.sh | sh
-  - echo "$HEROKU_PASSWORD" | docker login -u "$HEROKU_USERNAME" --password-stdin registry.heroku.com
+$ heroku stack:set container
 ~~~~
 
-* Generación de token para usar como HEROKU_PASSWORD
-
+* Pusheamos nuestra applicación a Heroku.
 ~~~~
-heroku authorizations:create
-~~~~
-
-* Tag y push del deploy de la imagen
-
-~~~~
-- docker tag "user_dockerhub"/"repo_dockerhub" registry.heroku.com/$HEROKU_APP_NAME/web
-
-....
-
-docker push registry.heroku.com/$HEROKU_APP_NAME/web;
+$ git push heroku master
 ~~~~
 
-* Release
+[Enlace a mi heroku.yml](https://github.com/adriordi/proyectoIV/blob/master/heroku.yml)
+Toda la documentación que he seguido para realizar este apartado se en cuentra [aquí](https://devcenter.heroku.com/articles/buildpack-builds-heroku-yml#getting-started-existing-app)
 
+## Despliegue del contenedor
+
+Para el despliegue del contenedor nos hace falta un archivo Dockerfile, [enlace al mio](https://github.com/adriordi/proyectoIV/blob/master/Dockerfile), el cual cree basándome en el que encontre en la [documentación ofical de docker](https://docs.docker.com/get-started/part2/#dockerfile).
+
+Una vez creado, seguí paso a paso la [documentación oficial de Heroku](https://devcenter.heroku.com/articles/container-registry-and-runtime#dockerfile-commands-and-runtime):
+
+* Logeo en Container Registry:
 ~~~~
-heroku container:release web --app $HEROKU_APP_NAME
+$ heroku login
+$ heroku container:login
 ~~~~
 
+* Buildeo de la imagen y push al Container Registry:
+~~~~
+$ heroku container:push web
+~~~~
 
-Al final nuestro archivo .travis.yml quedaría [así](https://github.com/adriordi/proyectoIV/blob/master/.travis.yml)
+* Release de la imagen:
+~~~~
+$ heroku container:release web
+~~~~
+
+* Por último para el despliegue:
+~~~~
+$ heroku git:remote -a workwaitqueue-docker
+$ git push heroku master
+~~~~
