@@ -33,7 +33,8 @@ $ heroku stack:set container
 $ git push heroku master
 ~~~~
 
-[Enlace a mi heroku.yml](https://github.com/adriordi/proyectoIV/blob/master/heroku.yml)
+[Enlace a mi heroku.yml](https://github.com/adriordi/proyectoIV/blob/master/heroku.yml).
+
 Toda la documentación que he seguido para realizar este apartado se en cuentra [aquí](https://devcenter.heroku.com/articles/buildpack-builds-heroku-yml#getting-started-existing-app)
 
 ## Despliegue del contenedor
@@ -63,3 +64,5 @@ $ heroku container:release web
 $ heroku git:remote -a workwaitqueue-docker
 $ git push heroku master
 ~~~~
+
+Toda la documentacion del despliegue con docker se puede encontrar [aqui](https://workwaitqueue-docker.herokuapp.com/doc) 
