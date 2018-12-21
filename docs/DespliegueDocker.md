@@ -65,4 +65,9 @@ $ heroku git:remote -a workwaitqueue-docker
 $ git push heroku master
 ~~~~
 
-Toda la documentacion del despliegue con docker se puede encontrar [aqui](https://workwaitqueue-docker.herokuapp.com/doc) 
+![](./imgs/docker_status.png)
+
+
+Toda la documentacion del despliegue con docker se puede encontrar [aqui](https://workwaitqueue-docker.herokuapp.com/doc)
+
+![](./imgs/docker_doc.png)
