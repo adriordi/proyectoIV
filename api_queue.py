@@ -12,6 +12,15 @@ def status():
         }
         
         return response
+
+@hug.get('/status')
+def status():
+        """Returns json with app status"""
+        response = {
+                "status": "OK",
+        }
+        
+        return response
         
 @hug.get()
 def works():
