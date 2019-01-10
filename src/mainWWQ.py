@@ -33,7 +33,7 @@ class WorkWaitQueue:
         """
         Adds work and incrementes the number of works with priority.
         """
-        self.addWork()
+        addWork()
         self._nPriorityWorks += 1
         
     def delWork(self):
@@ -51,7 +51,7 @@ class WorkWaitQueue:
         Decrements the number of works with priority
         """
         if self._nPriorityWorks >=1:
-            self.delWork()
+            delWork()
             self._nPriorityWorks -= 1
         else:
             print("No hay trabajos con prioridad.")
