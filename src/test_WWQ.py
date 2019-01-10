@@ -9,7 +9,7 @@ from requests import *
 
 class testWWQ(unittest.TestCase):
     def setUp(self):
-        self.queue = WorkWaitQueue("cola1", 0)
+        self.queue = WorkWaitQueue("cola", 0, 0)
 
     def test_queue_is_empty(self):
         self.assertEqual(self.queue.queueEmpty(),True,"La cola esta vacia")
@@ -20,6 +20,12 @@ class testWWQ(unittest.TestCase):
         self.queue.addWork()
         self.assertEqual(self.queue.nWorks(), previous_size + 1)
 
+    def test_increment_priority_works(self):
+        # This avoid hardcode the number of jobs in the assert
+        previous_size = self.queue.nPriorityWorks()
+        self.queue.addPriorityWork()
+        self.assertEqual(self.queue.nPriorityWorks(), previous_size + 1)
+        
     def test_decrement_works(self):
         # This avoid hardcode the number of jobs in the assert
         previous_size = self.queue.nWorks()
@@ -27,6 +33,13 @@ class testWWQ(unittest.TestCase):
         self.queue.delWork()
         self.assertEqual(self.queue.nWorks(), final_size)
 
+    def test_decrement_priority_works(self):
+        # This avoid hardcode the number of jobs in the assert
+        previous_size = self.queue.nPriorityWorks()
+        final_size = 0 if previous_size is 0 else previous_size - 1
+        self.queue.delPriorityWork()
+        self.assertEqual(self.queue.nPriorityWorks(), final_size)
+        
     def test_decrement_works_non_null(self):
         # Add some works
         self.queue.addWork()
@@ -37,6 +50,17 @@ class testWWQ(unittest.TestCase):
         self.queue.delWork()
         self.assertEqual(self.queue.nWorks(), final_size)
 
+    def test_decrement_works_non_null(self):
+        # Add some works
+        self.queue.addPriorityWork()
+        self.queue.addPriorityWork()
+        # This avoid hardcode the number of jobs in the assert
+        previous_size = self.queue.nPriorityWorks()
+        final_size = 0 if previous_size is 0 else previous_size - 1
+        self.queue.delPriorityWork()
+        self.assertEqual(self.queue.nPriorityWorks(), final_size)
+
+        
 #    def test_status(self):
 #        r = requests.get(url)
 #        self.assertEqual(r.status_code,200,"Devuelve status 200")
