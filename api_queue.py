@@ -2,7 +2,7 @@ import hug
 import json
 from src.mainWWQ import WorkWaitQueue
 
-queue = WorkWaitQueue("service_queue", 0)
+queue = WorkWaitQueue("service_queue", 0, 0)
 
 @hug.get('/')
 def status():
