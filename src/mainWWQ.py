@@ -1,8 +1,9 @@
 class WorkWaitQueue:
 
-    def __init__(self, name, nw):
+    def __init__(self, name, nw, npw):
         self._name = name
         self._nWorks = nw
+        self._nPriorityWorks = npw
 
     def name(self):
         """
@@ -16,12 +17,25 @@ class WorkWaitQueue:
         """
         return self._nWorks
 
+    def nPriorityWorks(self):
+        """
+        Returns the number of works with priority in queue.
+        """
+        return self._nPriorityWorks
+        
     def addWork(self):
         """
         Increments the number of works waiting in the queue.
         """
         self._nWorks += 1
 
+    def addPriorityWork(self):
+        """
+        Adds work and incrementes the number of works with priority.
+        """
+        addWork()
+        self._nPriorityWorks += 1
+        
     def delWork(self):
         """
         Decrements (if possible) the numbers of works waiting
@@ -32,6 +46,17 @@ class WorkWaitQueue:
         else:
             print("La cola esta vacia")
 
+    def delPriorityWork(self):
+        """
+        Decrements the number of works with priority
+        """
+        if self._nPriorityWorks >=1:
+            delWork()
+            self._nPriorityWorks -= 1
+        else:
+            print("No hay trabajos con prioridad.")
+        
+
     def queueEmpty(self):
         """
         Returns whether the queue is empty or not.
@@ -40,3 +65,5 @@ class WorkWaitQueue:
             return True
         else:
             return False
+
+    
