@@ -35,6 +35,20 @@ def works():
 
 	return response
 
+@hug.get()
+def priority_works():
+	""" Returns json containing with the number of works with priority"""
+	response = {
+		"status": 200,
+		"description": "OK",
+		"data": {
+			"queue size": queue.nPriorityWorks()
+		}
+	}
+
+	return response
+
+
 @hug.put()
 def add_work():
 	"""Adds a new job to the queue"""
@@ -54,6 +68,25 @@ def add_work():
 	return response
 
 @hug.put()
+def add_priority_work():
+	"""Adds a new job with priority to the queue"""
+	try:
+		queue.addPriorityWork()
+		status = 200
+		description = "OK"
+	except Exception as e:
+		status = 500
+		description = "Error: Internal server error"
+
+	response = {
+		"status": status,
+		"description": description
+	}
+
+	return response
+
+
+@hug.put()
 def del_work():
 	"""Delete a job to the queue"""
 	try:
@@ -70,6 +103,25 @@ def del_work():
 	}
 
 	return response
+
+@hug.put()
+def del_priority_work():
+	"""Delete a job with priority to the queue"""
+	try:
+		queue.delPriorityWork()
+		status = 200
+		description = "OK"
+	except Exception as e:
+		status = 500
+		description = "Error: Internal server error"
+
+	response = {
+		"status": status,
+		"description": description
+	}
+
+	return response
+
 
 @hug.get()
 def empty():
