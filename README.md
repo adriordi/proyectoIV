@@ -26,7 +26,7 @@ El proyecto se basa en una cola de trabajos para mantener el orden y prioridad s
 * [hug](http://www.hug.rest/); como framework para desarrollar la API.
 * [unittest](https://docs.python.org/3/library/unittest.html); como framework para los test unitarios.
 * [Docker](https://www.docker.com/), [Heroku](https://www.heroku.com/) y [Travis-CI](https://travis-ci.org); para la integración, despliege y contenerización.
-* [Elasticsearch](https://www.elastic.co/); para la base de datos. 
+ 
 
 # Descripción de la clase
 Ahora mismo cuento con una clase sencilla llamada [Workwaitqueue](https://github.com/adriordi/proyectoIV/blob/master/src/mainWWQ.py). La clase contiene métodos para saber el estado de la cola, la cantidad de trabajos que contiene y poder añadir o eliminar trabajos con una prioridad determinada.
