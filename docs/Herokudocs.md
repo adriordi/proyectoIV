@@ -20,6 +20,20 @@ curl -X PUT https://workwaitqueue.herokuapp.com/add_work
 curl -X PUT https://workwaitqueue.herokuapp.com/del_work
 ~~~~
 
+* Métodos para trabajos con prioridad:
+** Obtener el número de trabajos con prioridad de la cola: [/priority_works](https://workwaitqueue.herokuapp.com/priority_works)
+
+** Añadir un trabajo con prioridad a la cola: [/add_priority_work](https://workwaitqueue.herokuapp.com/add_priority_work)
+~~~~
+curl -X PUT https://workwaitqueue.herokuapp.com/add_priority_work
+~~~~
+
+** Eliminar un trabajo con prioridad de la cola: [/del_priority_work](https://workwaitqueue.herokuapp.com/del_priority_work)
+~~~~
+curl -X PUT https://workwaitqueue.herokuapp.com/del_priority_work
+~~~~
+
+
 * Saber si la cola está vacía o no: [/empty](https://workwaitqueue.herokuapp.com/empty)
 > En el apartado data nos dice a través de un booleano si la cola está vacía (TRUE) o no (FALSE). 
 

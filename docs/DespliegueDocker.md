@@ -28,10 +28,14 @@ $ git commit -m "Add heroku.yml"
 $ heroku stack:set container
 ~~~~
 
-* Pusheamos nuestra applicación a Heroku.
+* Pusheamos nuestra applicación a Heroku o, como en mi caso, lo sincronizamos con GitHub para que se despliegue cada vez que hacemos un push a nuestra branch master(foto de abajo).
 ~~~~
 $ git push heroku master
 ~~~~
+
+![](./imgs/autodeploy_docker_github.png)
+
+
 
 [Enlace a mi heroku.yml](https://github.com/adriordi/proyectoIV/blob/master/heroku.yml).
 
