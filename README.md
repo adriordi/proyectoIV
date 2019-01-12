@@ -1,7 +1,7 @@
 # WorkWaitQueue
 Ver [página del proyecto](https://adriordi.github.io/proyectoIV/)
 
-Contenedor: https://workwaitqueue-docker.herokuapp.com/status
+Contenedor: https://workwaitqueue-docker.herokuapp.com
 
 [![](https://www.herokucdn.com/deploy/button.svg)](https://workwaitqueue.herokuapp.com/)
 [![](https://cdn.rawgit.com/play-with-docker/stacks/cff22438/assets/images/button.png)](https://workwaitqueue-docker.herokuapp.com/)
