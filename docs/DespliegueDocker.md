@@ -45,6 +45,12 @@ Toda la documentación que he seguido para realizar este apartado se en cuentra 
 
 Para el despliegue del contenedor nos hace falta un archivo Dockerfile, [enlace al mio](https://github.com/adriordi/proyectoIV/blob/master/Dockerfile), el cual cree basándome en el que encontre en la [documentación ofical de docker](https://docs.docker.com/get-started/part2/#dockerfile).
 
+La imagen elegida es **python:3.6-slim**. Es una imagen que solo contiene los paquetes mínimos necesarios para ejecutar python, además tiene limitaciones de espacio, pero es suficiente para mi aplicación.
+
+Esto se pone en la primera línea del Dockerfile, en las siguientes, creamos el directorio de trabajo y copiamos en él solo lo necesario de nuestro proyecto.
+
+Las últimas líneas del Dockerfile son para instalar los paquetes necesarios, puesto en mi requirements, exponer el puerto y ejecutar la api en ese puerto respectivamente.
+
 Una vez creado, seguí paso a paso la [documentación oficial de Heroku](https://devcenter.heroku.com/articles/container-registry-and-runtime#dockerfile-commands-and-runtime):
 
 * Logeo en Container Registry:
