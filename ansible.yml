@@ -1,8 +1,0 @@
-- hosts: all
-  sudo: yes
-  remote_user: archdri
-
-  tasks:
-  - name: Actualizar sistema
-    become: true
-    command: sudo apt-get update
