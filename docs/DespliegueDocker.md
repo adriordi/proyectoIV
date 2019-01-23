@@ -47,9 +47,42 @@ Para el despliegue del contenedor nos hace falta un archivo Dockerfile, [enlace 
 
 La imagen elegida es **python:3.6-slim**. Es una imagen que solo contiene los paquetes mínimos necesarios para ejecutar python, además tiene limitaciones de espacio, pero es suficiente para mi aplicación.
 
-Esto se pone en la primera línea del Dockerfile, en las siguientes, creamos el directorio de trabajo y copiamos en él solo lo necesario de nuestro proyecto.
+Esto se pone en la primera línea del Dockerfile.
+~~~~
+# Use an official Python runtime as a parent image
+FROM python:3.6-slim
+~~~~
+En las siguiente, creamos el directorio de trabajo, en mi caso lo he llamado "wwq".
+~~~~
+# Set the working directory to /wwq
+WORKDIR /wwq
+~~~~
 
-Las últimas líneas del Dockerfile son para instalar los paquetes necesarios, puesto en mi requirements, exponer el puerto y ejecutar la api en ese puerto respectivamente.
+Copiamos en él solo lo necesario de nuestro proyecto, los archivos fuentes con los test, la api y los requirements para que todo funcione.
+~~~~
+# Copy the current directory contents into the container at /wwq
+COPY ./src/ /wwq/src
+COPY ./requirements.txt /wwq
+COPY ./api_queue.py /wwq
+~~~~
+
+En la siguiente linea instalar los paquetes necesarios del requirements desde los hosts oficiales de Python.
+~~~~
+# Install any needed packages specified in requirements.txt
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
+~~~~
+
+Acto seguido debemos exponer el puerto del contenedor por el cual vamos a escuchar.
+~~~~
+# Make port 80 available to the world outside this container
+EXPOSE 80
+~~~~
+
+Por último añadimos la linea para ejecutar la api en ese puerto respectivamente con gunicorn.
+~~~~
+# Run app.py when the container launches
+CMD ["gunicorn", "-b", "0.0.0.0:80", "api_queue:__hug_wsgi__"]
+~~~~
 
 Una vez creado, seguí paso a paso la [documentación oficial de Heroku](https://devcenter.heroku.com/articles/container-registry-and-runtime#dockerfile-commands-and-runtime):
 
