@@ -29,7 +29,7 @@ Vagrant.configure("2") do |config|
     override.ssh.private_key_path = "/home/archdri/.ssh/google_compute_engine"    
   end
   
-  # Provisionamiento - Ansible
+  # Aprovisionamiento - Ansible
   config.vm.provision "ansible" do |ansible|
     ansible.become = true
     ansible.verbose = "vvvv"
@@ -62,9 +62,9 @@ Por último también ponemos la imagen que queramos para nuestra máquina, las d
 
 Para poder usar los comandos anteriores se debe instalar el sdk de google cloud que dejo la documentación oficial por [aquí](https://cloud.google.com/sdk/install).
 
-Las dos últimas líneas de mi Vagrantfile, antes de empezar con el provisionamiento a través de ansible, es para la conexión por ssh. Antes de explicarlas, hay que añadir la clave  pública que vamos a usar de nuestro par de claves ssh, para ello nos vamos al apartado **Compute Engine** -> **Metadatos** -> **Claves ssh** y añadimos la **clave pública** del par de claves ssh que vamos a utilizar para nuestra conexión. Google cloud nos proporciona por defecto un par de claves que se crean automáticamente y son las que he utilizado en mi caso. Volvemos a mi Vagrantfile para explicar las dos últimas líneas, en la primera debemos poner el usuario por el que vamos a conectarnos y en la segunda el path de nuestra clave privada.
+Las dos últimas líneas de mi Vagrantfile, antes de empezar con el aprovisionamiento a través de ansible, es para la conexión por ssh. Antes de explicarlas, hay que añadir la clave  pública que vamos a usar de nuestro par de claves ssh, para ello nos vamos al apartado **Compute Engine** -> **Metadatos** -> **Claves ssh** y añadimos la **clave pública** del par de claves ssh que vamos a utilizar para nuestra conexión. Google cloud nos proporciona por defecto un par de claves que se crean automáticamente y son las que he utilizado en mi caso. Volvemos a mi Vagrantfile para explicar las dos últimas líneas, en la primera debemos poner el usuario por el que vamos a conectarnos y en la segunda el path de nuestra clave privada.
 
-## Provisionamiento con ansible.
+## Aprovisionamiento con ansible.
 Siguiendo con el Vagrantfile, debemos añadir principalmente el path a donde se encuentra nuestra receta con `ansible.playbook`, además he añadido una función para que se pueda hacer sudo con `ansible.become = true` y `ansible.verbose` para depurar.
 
 Enlace a mi [playbook](https://github.com/adriordi/proyectoIV/blob/master/provision/playbook.yml)
