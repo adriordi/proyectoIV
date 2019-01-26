@@ -3,7 +3,7 @@ Ver [página del proyecto](https://adriordi.github.io/proyectoIV/)
 
 Contenedor: https://workwaitqueue-docker.herokuapp.com
 
-Despliegue final: [35.204.69.190](http://35.204.69.190/)
+Despliegue final: 35.204.69.190
 
 
 
