@@ -24,7 +24,6 @@
     become: true
     command: sudo apt-get -y install python3-venv python3-pip
     
-
   - name: Clone my GitHub repository
     git: repo=https://github.com/adriordi/proyectoIV.git dest=proyectoIV/ force=yes
 
