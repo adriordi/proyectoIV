@@ -8,6 +8,7 @@ Despliegue final: [35.204.69.190](http://35.204.69.190/)
 
 
 <img src="https://cloud.google.com/_static/be157a52c2/images/cloud/cloud-logo.svg" width="180">
+
 [![](https://www.herokucdn.com/deploy/button.svg)](https://workwaitqueue.herokuapp.com/)
 [![](https://cdn.rawgit.com/play-with-docker/stacks/cff22438/assets/images/button.png)](https://workwaitqueue-docker.herokuapp.com/)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://github.com/antonioJ95/ProyectoIV/blob/master/LICENSE)
