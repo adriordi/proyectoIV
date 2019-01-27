@@ -134,11 +134,23 @@ def Instalar():
 def Iniciar():
     "Inicia la aplicacion"
     run('cd proyectoIV/ && sudo gunicorn api_queue:__hug_wsgi__ -b 0.0.0.0:80')
+
+def Parar(): 
+    "Parar la ejecución matando el proceso"
+    run('sudo kill -9 $(ps -A -o pid,cmd | grep gunicorn | head -n 1 | cut -d " " -f 1)')
+
+def Actualizar():
+    "Reinicia la aplicacion y vuelve a ejecutarla"
+    Parar()
+    Instalar()
+    Iniciar()
+
 ````
 
-Como se puede ver, yo solo dispongo de dos funciones que nos van a permitir ejecutar comandos remotamente en nuestra máquina virtual.
+Como se puede ver, dispongo de cuatro funciones que nos van a permitir ejecutar comandos remotamente en nuestra máquina virtual.
 En la primera función borramos lo clonado ya en el ansible y lo volvemos a clonar además de hacer `make install` para instalar el proyecto.
 En la segunda nos movemos al directorio del proyecto y la desplegamos por el puerto 80 como vemos en la imagenes.
+La tercera función es para parar la ejecución matando el proceso de gunicorn y en la última función es una actualización de todo el proceso haciendo primero una llamada a `Parar()`, después a `Instalar()` y por último volvemos a `Iniciar()`. 
 
 
 ![](./imgs/archdri_ssh_pssw_require.png)
